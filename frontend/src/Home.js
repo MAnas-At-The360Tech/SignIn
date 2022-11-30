@@ -11,6 +11,7 @@ export default function Home() {
                 <>
                     <h4 className='text-center'>User Name : {user.name}</h4>
                     <h4 className='text-center'>User Email : {user.email}</h4>
+                    <h4 className='text-center'>Email is : {user.email_status}</h4>
                 </>
             )
 

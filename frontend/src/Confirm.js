@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import Context from './Context';
 
 export default function Confirm() {
-    const { user } = useContext(Context)
+    const { user, setuser } = useContext(Context)
+    const navigate = useNavigate();
+
     const [LogInInput, setLogInInput] = useState({
         email: user.email,
         code: ''
@@ -35,6 +38,13 @@ export default function Confirm() {
         });
 
         setResponseStatus(response.status)
+
+        if (response.status === 200) {
+            setuser({ ...user, email_status: 'verify' })
+            setTimeout(() => {
+                navigate("/")
+            }, 1000);
+        }
         let data = await response.text();
         console.log(data);
     }
