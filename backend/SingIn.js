@@ -1,27 +1,29 @@
 const nodemailer = require('nodemailer');
 const { default: User } = require('./User');
 
-// const Gmail = 'm.anas.the360tech@gmail.com'
-// const pass = 'gugoqdbonfvpvesy'
 
 module.exports.SingIn = async (req, res) => {
     let { email, name, password } = req.body
-    let code = getRandomInt(1000,9999)
-
-    // let transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: { user: Gmail, pass }
-    // });
-
+    let code = getRandomInt(1000, 9999)
+    // For Gmail
     let transporter = nodemailer.createTransport({
-        host: "mail.the360technologies.com",
-        port: 465,
-        secure: true, // true for 465, false for other ports
+        service: 'gmail',
         auth: {
-          user: 'm.anaslatif@the360technologies.com', // generated ethereal user
-          pass: 'Anas@work1', // generated ethereal password
-        },
-      });
+            user: 'm.anas.the360tech@gmail.com',
+            pass: 'gugoqdbonfvpvesy'
+        }
+    });
+
+    // For Custum Email
+    // let transporter = nodemailer.createTransport({
+    //     host: "mail.the360technologies.com",
+    //     port: 465,
+    //     secure: true, // true for 465, false for other ports
+    //     auth: {
+    //       user: 'm.anaslatif@the360technologies.com', // generated ethereal user
+    //       pass: 'Anas@work1', // generated ethereal password
+    //     },
+    //   });
 
     let mailOptions = {
         from: "m.anaslatif@the360technologies.com",
