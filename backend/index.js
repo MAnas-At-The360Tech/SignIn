@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const { EmailConfirm } = require('./EmailConfirm');
+const { Login } = require('./Login');
 const app = express()
 const { SingIn } = require('./SingIn');
 
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
   res.send('App is working')
 })
 
+app.post('/Login', Login)
 app.post('/SingIn', SingIn)
 app.post('/confirm', EmailConfirm)
 
