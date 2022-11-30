@@ -48,8 +48,12 @@ module.exports.SingIn = async (req, res) => {
 
     try {
         const result = await user.save()
-
-        res.status(200).json(result)
+        const data = {
+            name: result.name,
+            email: result.email,
+            email_status: result.email_status,
+        }
+        res.status(200).json(data)
     } catch (error) {
         console.log(error)
     }

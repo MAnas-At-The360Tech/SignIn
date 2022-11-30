@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import Context from './Context';
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+    const { setuser } = useContext(Context)
+    const navigate = useNavigate();
     const [LogInInput, setLogInInput] = useState({
         name: '',
         email: '',
@@ -37,8 +41,10 @@ export default function SignIn() {
             headers: headersList
         });
 
-        let data = await response.text();
+        let data = await response.json();
+        setuser(data)
         console.log(data);
+        navigate("/confirm")
     }
 
     return (
