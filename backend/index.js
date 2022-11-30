@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require("mongoose");
+const { EmailConfirm } = require('./EmailConfirm');
 const app = express()
 const { SingIn } = require('./SingIn');
 
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/SingIn', SingIn)
+app.post('/confirm', EmailConfirm)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
